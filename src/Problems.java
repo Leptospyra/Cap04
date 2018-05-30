@@ -13,7 +13,25 @@ public class Problems {
         //Problema10();
         //Problema17();
         //Problema19("Heleloe");
-        Problema20("Rafael Lima");
+        //Problema20("Rafael Lima");
+        Problema21("aetrneaaeqs");
+    }
+
+    private static void Problema21(String texto) {
+        texto = texto.toLowerCase();
+        int count = 0;
+        for (int i = 0; i < texto.length(); i++) {
+            if (texto.charAt(i) >= 'n') {
+                count++;
+            }
+        }
+        System.out.println(count + " Letras são depois do 'n'");
+
+        /*examine a String and
+        determine how many of its letters
+        come from the second half of the alphabet (after 'n' letters).
+        **Compare case-insensitively, such that values of 'N' through 'Z' also count.
+        **Assume that every character in the String is a letter.*/
     }
 
     private static void Problema20(String name) {
