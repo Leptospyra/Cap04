@@ -14,7 +14,77 @@ public class Problems {
         //Problema17();
         //Problema19("Heleloe");
         //Problema20("Rafael Lima");
-        Problema21("aetrneaaeqs");
+        //Problema21("aetrneaaeqs");
+        Problema22();
+    }
+    /*
+    **Consider a method printTriangleType that accepts three integer arguments representing the lengths of the sides
+    **and prints the type of triangle that these sides form. equilateral, isosceles, and scalene.
+
+    certain int values (or combinations) would be illegal and not represent the sides of an actual triangle.
+    What are these values?
+    How would you describe the precondition(s) of the printTriangleType method?
+    Só irá existir um triângulo se, somente se, os seus lados obedeceram à seguinte regra:
+    um de seus lados deve ser maior que o valor absoluto (módulo) da diferença dos outros dois lados
+    e menor que a soma dos outros dois lados. Veja o resumo da regra abaixo:
+
+            | b - c | < a < b + c
+            | a - c | < b < a + c
+            | a - b | < c < a + b */
+
+    private static void Problema22() {
+        boolean triangulo = false;
+        triangulo = ValidaTriangulo(1,2,3);
+        if (triangulo) {
+            System.out.println(printTriangleType(2,2,2));
+        } else {
+            System.out.println("Triangulo invalido");
+        }
+    }
+
+    private static boolean ValidaTriangulo(int cateto01, int cateto02, int hipotenusa) {
+        if (((cateto02 - hipotenusa) < (cateto01)) && ((cateto02 + hipotenusa) > (cateto01))){
+            if (((cateto01 - hipotenusa) < (cateto02)) && ((cateto01 + hipotenusa) > (cateto02))) {
+                if (((cateto01 - cateto02) < (hipotenusa)) && ((cateto01 + cateto02) > (hipotenusa))){
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+
+    private static String printTriangleType(int cateto01, int cateto02, int hipotenusa) {
+        int ladosIguais = 0;
+        String msg = "";
+        if (cateto01 == cateto02) {
+            ladosIguais++;
+        }
+        if (cateto01 == hipotenusa) {
+            ladosIguais++;
+        }
+        if (cateto02 == hipotenusa) {
+            ladosIguais++;
+        }
+        if (ladosIguais == 0 ){
+            msg =("Triangulo escaleno");
+        } else if (ladosIguais== 1){
+            msg =("Triangulo isosceles");
+        } else {
+            msg =("Triangulo equilatero");
+        }
+        return msg;
+    }
+
+    //solução do livro (Exer22)
+    public static void printTriangleType2(int s1, int s2, int s3) {
+        if (s1 == s2 && s2 == s3) {
+            System.out.println("equilateral");
+        } else if (s1 == s2 || s1 == s3 || s2 == s3) {
+            System.out.println("isosceles");
+        } else {
+            System.out.println("scalene");
+        }
     }
 
     private static void Problema21(String texto) {
@@ -27,11 +97,7 @@ public class Problems {
         }
         System.out.println(count + " Letras são depois do 'n'");
 
-        /*examine a String and
-        determine how many of its letters
-        come from the second half of the alphabet (after 'n' letters).
-        **Compare case-insensitively, such that values of 'N' through 'Z' also count.
-        **Assume that every character in the String is a letter.*/
+
     }
 
     private static void Problema20(String name) {
