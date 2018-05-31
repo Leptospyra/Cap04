@@ -1,4 +1,3 @@
-import java.util.PropertyPermission;
 import java.util.Scanner;
 
 public class Problems {
@@ -15,15 +14,53 @@ public class Problems {
         //Problema19("Heleloe");
         //Problema20("Rafael Lima");
         //Problema21("aetrneaaeqs");
-        Problema22();
+        //Problema22();
+        //Problema24(3,5,2);
+        //Problema25(2,4,8);
+        Problema26(1,2,3);
     }
-    /*
+
+    //transcrevi a solução do livro por que foi surpreendente para mim
+    public static void Problema26(int n1, int n2, int n3) {
+        int count = n1 % 2 + n2 % 2 + n3 % 2;
+        System.out.println(count +
+                " of the 3 numbers are odd.");
+    }
+    //Exercicio 25 aprendendo a usar Exceptions
+    private static void Problema25(int a, int b, int c) {
+        double x1 = 0;
+        double x2 = 0;
+        double delta = (b*b-4*a*c);
+        if (a == 0) {
+            throw new IllegalArgumentException("Valor invalido a=0 ");
+        }
+        if (delta < 0) {
+            throw new IllegalArgumentException("Valor de Delta invalido (Delta negativo).");
+        }
+
+        x1 = (-b + Math.sqrt(delta))/(2.0 * a);
+        x2 = (-b - Math.sqrt(delta))/(2.0 * a);
+        System.out.println("x1: " + x1 + "x2: " + x2);
+
+    }
+
+
+    // solução do livro para imprimir o numero do meio
+    private static void Problema24(int n1, int n2, int n3) {
+        System.out.println(medianOf3(-3,4,2) + " é o número do meio");
+    }
+    public static int medianOf3(int n1, int n2, int n3) {
+        return Math.max(Math.max(Math.min(n1, n2),
+            Math.min(n2, n3)),
+            Math.min(n1, n3));
+    }
+
+    /* COMENTARIOS PARA O EXER22
     **Consider a method printTriangleType that accepts three integer arguments representing the lengths of the sides
     **and prints the type of triangle that these sides form. equilateral, isosceles, and scalene.
 
     certain int values (or combinations) would be illegal and not represent the sides of an actual triangle.
-    What are these values?
-    How would you describe the precondition(s) of the printTriangleType method?
+    What are these values? How would you describe the precondition(s) of the printTriangleType method?
     Só irá existir um triângulo se, somente se, os seus lados obedeceram à seguinte regra:
     um de seus lados deve ser maior que o valor absoluto (módulo) da diferença dos outros dois lados
     e menor que a soma dos outros dois lados. Veja o resumo da regra abaixo:
@@ -33,8 +70,8 @@ public class Problems {
             | a - b | < c < a + b */
 
     private static void Problema22() {
-        boolean triangulo = false;
-        triangulo = ValidaTriangulo(1,2,3);
+        boolean triangulo;
+        triangulo = ValidaTriangulo(4,2,3);
         if (triangulo) {
             System.out.println(printTriangleType(2,2,2));
         } else {
@@ -43,9 +80,9 @@ public class Problems {
     }
 
     private static boolean ValidaTriangulo(int cateto01, int cateto02, int hipotenusa) {
-        if (((cateto02 - hipotenusa) < (cateto01)) && ((cateto02 + hipotenusa) > (cateto01))){
-            if (((cateto01 - hipotenusa) < (cateto02)) && ((cateto01 + hipotenusa) > (cateto02))) {
-                if (((cateto01 - cateto02) < (hipotenusa)) && ((cateto01 + cateto02) > (hipotenusa))){
+        if ((Math.abs(cateto02 - hipotenusa) < (cateto01)) && ((cateto02 + hipotenusa) > (cateto01))){
+            if ((Math.abs(cateto01 - hipotenusa) < (cateto02)) && ((cateto01 + hipotenusa) > (cateto02))) {
+                if ((Math.abs(cateto01 - cateto02) < (hipotenusa)) && ((cateto01 + cateto02) > (hipotenusa))){
                     return true;
                 }
             }
