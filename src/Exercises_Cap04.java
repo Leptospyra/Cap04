@@ -4,10 +4,35 @@ public class Exercises_Cap04 {
         //System.out.println(repl("Amanda", 3));//concatena e repete x vezes
         //System.out.println(season(10,2)); //imprime a estação do ano
         //System.out.println(pow(3,4)); // 3 * 3 * 3 * 3, 81.0
-
+        //printRange(5,5); //[19, 18, 17, 16, 15, 14, 13, 12, 11]
+        
     }
 
 
+    /*printRange accepts two integers as arguments
+    * and prints the sequence of numbers between the two arguments, enclosed in square brackets.
+    * Print an increasing sequence if the first argument is smaller than the second;
+    * otherwise, print a decreasing sequence. If the two numbers are the same, that number should be printed between square brackets.
+    * */
+    private static void printRange(int n1, int n2) {
+        System.out.print("[");
+        if (n1 <= n2){
+            for (int i = n1; i<=n2;i++ ){
+                System.out.print(i);
+                if (i != n2){
+                    System.out.print(",");
+                }
+            }
+        } else {
+            for (int i = n1; i>=n2;i-- ){
+                System.out.print(i);
+                if (i != n2){
+                    System.out.print(",");
+                }
+            }
+        }
+        System.out.println("]");
+    }
     /*
     * Write a method called pow that accepts a base and an exponent as parameters
     * and returns the base raised to the given power.
