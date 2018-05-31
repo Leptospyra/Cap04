@@ -2,8 +2,25 @@ public class Exercises_Cap04 {
     public static void main(String[] args){
         //fractionSum(10); // soma as n primeiras fraçoes
         //System.out.println(repl("Amanda", 3));//concatena e repete x vezes
-        System.out.println(season(10,2)); //imprime a estação do ano
+        //System.out.println(season(10,2)); //imprime a estação do ano
+        //System.out.println(pow(3,4)); // 3 * 3 * 3 * 3, 81.0
+
     }
+
+
+    /*
+    * Write a method called pow that accepts a base and an exponent as parameters
+    * and returns the base raised to the given power.
+    * */
+    private static String pow(int base, int expoente) {
+        String expressao = "" + base;
+        for (int i=2; i<= expoente; i++){
+            expressao += " * " + base;
+        }
+
+        return expressao + ", or " + Math.pow(base, expoente);
+    }
+
     /*
     * Write a method called season
     * that takes as parameters two integers representing a month and day
