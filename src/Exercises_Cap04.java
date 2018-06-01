@@ -14,8 +14,68 @@ public class Exercises_Cap04 {
         //fim do exercicio 06
         //evenSumMax(console); exercicio 07
         //System.out.println(printGPA(console)); // exercicio 8 entra dados na mesma linha
-        Exercicio09();
+        //Exercicio09();
+        //System.out.println(average(console));//Exer 10
+        //getGrade(console); //Exercicio 12 (o 11 é + do mesmo)
+        //System.out.println(printPalindrome(console)); testa se é palavra palindrome abba Exercicio 13
+        System.out.println(swapPairs("hello there")); //troco os pares Exercicio 14
     }
+    //consegui a solução no github, não consegui porque tentei acessar a posição 1 de uma string em branco
+    //a solução é criar uma nova string e ir adcionando cada caracter da palavra de origem.
+    public static String swapPairs(String string) {
+        String newString = "";
+
+        for (int i = 0; i < string.length() / 2; i++) {
+            newString += string.charAt(2 * i + 1);
+            newString += string.charAt(2 * i);
+        }
+
+        if (string.length() % 2 != 0) {
+            newString += string.charAt(string.length() - 1);
+        }
+
+        return newString;
+    }
+
+    //
+    private static String printPalindrome(Scanner console) {
+        System.out.print("Digite uma palavra para testar: ");
+        String palavra = console.next();
+        for (int i=0; i<(palavra.length()/2);i++){
+            if (palavra.charAt(i) != palavra.charAt(palavra.length()-(i+1))){
+                return "Não é uma palavra palindrome";
+            }
+        }
+        return "É uma palavra palindrome";
+    }
+
+    private static void getGrade(Scanner console) { //Exercicio 12
+        System.out.print("Entre com a nota final");
+        int nota = console.nextInt();
+        int grade = 8;
+        if (nota<60){
+            grade = 0;
+
+        } else if (nota>=95) {
+            grade = 40;
+        } else if ((nota>=60)&&((nota<=62))){
+            grade = 7;
+        } else {
+            for (int i = 1; i <= (nota - 63); i++) {
+                grade++;
+            }
+        }
+        System.out.println(1.0*grade/10);
+
+    }
+
+    private static String average(Scanner console) { //Exercicio 10
+        System.out.print("Entre com dois numeros inteiros");
+        int n1 = console.nextInt();
+        int n2 = console.nextInt();
+        return ("A média entre " + n1 + " e " + n2 + " é: " + (1.0*(n1+n2))/2);
+    }
+
     //aqui me parece que passar um objeto seria melhor, refazer quando aprender.
     private static void Exercicio09() {
         boolean triangulo;
