@@ -1,12 +1,52 @@
-import javax.script.ScriptContext;
 import java.util.Scanner;
+import java.util.*;
+import java.text.*;
 
 public class ProjectsCap04 {
-    public static void main(String[] args){
+    public static void main(String[] args) throws ParseException {
         Scanner console = new Scanner(System.in);
         //ToRamanNumerals(console); //Exercicio 01
         //ComparaTestes(console); //Exercicio 03
-        Exercicio05(console);
+        //Exercicio05(console);
+        Exercicio04(console);
+    }
+    /*Write a program that prompts for two people’s birthdays (month and day),
+     along with today’s month and day.
+     The program should figure out how many days remain until each user’s birthday and which birthday is sooner.
+     Hint: It is much easier to solve this problem if you convert each date into an “absolute day” of year, from 1 through 365.*/
+    private static void Exercicio04(Scanner console) throws ParseException {
+        System.out.println("Informe a data de hoje (dd/MM)");
+        String dataHoje = console.next();
+        dataHoje = dataHoje + "/2018";
+        System.out.println("Informe a data do aniversario 1 (dd/MM)");
+        String aniversario1 = console.next();
+        aniversario1 = aniversario1 + "/2018";
+        double diasAniver1 = getDiasTranscorridos(aniversario1, dataHoje);
+
+        System.out.println("Informe a data do aniversario 2 (dd/MM)");
+        String aniversario2 = console.next();
+        aniversario2 = aniversario2 + "/2018";
+        double diasAniver2 = getDiasTranscorridos(aniversario2, dataHoje);
+
+        System.out.printf("Dias corridos que faltam para o aniversario 1 %s\n", diasAniver1);
+        System.out.printf("Dias corridos que faltam para o aniversario 2 %s\n", diasAniver2);
+
+        System.out.println();
+        if (diasAniver1 < diasAniver2){
+            System.out.println("O dia do aniversario do Aniversariante 1 está mais proximo: " + diasAniver1);
+        } else {
+            System.out.println("O dia do aniversario do Aniversariante 2 está mais proximo: " + diasAniver2);
+        }
+    }
+
+    private static double getDiasTranscorridos(String dataFutura, String dataHoje) throws ParseException {
+
+        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
+        df.setLenient(false);
+        Date d1 = df.parse (dataHoje);
+        Date d2 = df.parse (dataFutura); // aqui pega a string que eu recebi no cabeçalho
+        long dt = (d2.getTime() - d1.getTime()) + 3600000; // 1 hora para compensar horário de verão
+        return (dt / 86400000L); // passaram-se 67111 dias
     }
     /*This program computes a student’s grade in a course. The course grade has three components:
     homework assignments,
